@@ -5,13 +5,94 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="a minimal weather app that brings you up-to-date weather information about your current location with forecast and hourly updates">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <script src="scripts/main.js"></script>
-    <title>Document</title>
+
+    <title>Alfonso ☁ Weather App</title>
+
+    <!-- META OpenGraph tags -->
+    <meta property="og:title" content="Alfonso Weather app" />
+    <meta property="og:description"
+        content="keep up to date with the latest weather update for you city with Alfonso Weather App">
+    <meta property="og:type" content="website">
 </head>
 
 <body>
+    <header dir="auto">
+        <h2 id="current-location">location</h2>
+        <h3><time datetime="date time">Sunday 8/1/2023 1:00PM </time></h3>
+    </header>
 
+    <main> <!-- current weather summary -->
+        <article class="mainContainer">
+            <section>
+                <img src="" alt="weather icon image">
+                <h4 id="current-degree">14</div>
+            </section>
+            <section>
+                <div>High 19</div>
+                <div>Low 12</div>
+                <div> Percepitation 19 </div>
+                <div>wind</div>
+                <div>5th info</div>
+                <div translate="no">more info provided by <a href="">weatherapi</a></div>
+            </section>
+        </article>
+        <!--quick week summary-->
+        <section id="weekly-summary">
+            <article class="weatherCard">
+                <h4>sunday</h4>
+                <p>14</p>
+                <img src="" alt="">
+            </article>
+            <article class="weatherCard">
+                <h4>monday</h4>
+                <p>11</p>
+                <img src="" alt="">
+            </article>
+            <article class="weatherCard">
+                <h4>tuesday</h4>
+                <p>12</p>
+                <img src="" alt="">
+            </article>
+            <article class="weatherCard">
+                <h4>wednesday</h4>
+                <p>13</p>
+                <img src="" alt="">
+            </article>
+            <article class="weatherCard">
+                <h4>thursday</h4>
+                <p>20</p>
+                <img src="" alt="">
+            </article>
+        </section>
+        <section id="detailed-hourly">
+            <article class="hourlyWeatherCard">
+                <p>right now !</p>
+                <time datetime=""></time>
+                <!-- contenxt menu -->
+                <button>...</button>
+            </article>
+            <article class="hourlyWeatherCard">
+                <p>right now !</p>
+                <time datetime=""></time>
+
+                <button>...</button>
+            </article>
+            <article class="hourlyWeatherCard">
+                <p>right now !</p>
+                <time datetime=""></time>
+
+                <button>...</button>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <p translate="no">Alfonso &copy; 2023</p>
+    </footer>
 </body>
 
 </html>
