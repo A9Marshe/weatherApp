@@ -1,15 +1,16 @@
 <!DOCTYPE html>
+<!-- placed the data-theme in html instead of body so JS can read it (deffering JS is possible but not needed in anythin so which makes current approach is more performant) -->
 <html lang="en">
 
 <head>
+    <script type="module" src="scripts/main.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="a minimal weather app that brings you up-to-date weather information about your current location with forecast and hourly updates">
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <script src="scripts/main.js"></script>
+    <link rel="shortcut icon" href="public/assets/logo.png" type="image/x-icon">
 
     <title>Alfonso ☁ Weather App</title>
 
@@ -28,6 +29,9 @@
 
     <main> <!-- current weather summary -->
         <article class="mainContainer">
+            <button data-color="blue" accesskey="b" type="button" value="blue">blue</button>
+            <button data-color="purple" accesskey="g" type="button" value="purple">purple</button>
+            <button accesskey="m" type="button" data-theme-mode="toggle">toggle</button>
             <section>
                 <img src="" alt="weather icon image">
                 <h4 id="current-degree">14</div>
