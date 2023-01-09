@@ -11,6 +11,7 @@
         content="a minimal weather app that brings you up-to-date weather information about your current location with forecast and hourly updates">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="shortcut icon" href="public/assets/logo.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
 
     <title>Alfonso ☁ Weather App</title>
 
@@ -22,16 +23,20 @@
 </head>
 
 <body>
-    <header dir="auto">
-        <h2 id="current-location">location</h2>
-        <h3><time datetime="date time">Sunday 8/1/2023 1:00PM </time></h3>
+    <header dir="auto" id="header">
+        <div>
+            <h2 id="current-location" style="text-transform:uppercase;">Latakia</h2>
+            <h3><time datetime="date time">Sunday 8/1/2023 1:00PM </time></h3>
+        </div>
+        <div><button data-color="blue" accesskey="b" type="button" value="blue">blue</button>
+            <button data-color="purple" accesskey="g" type="button" value="purple">purple</button>
+            <button accesskey="m" type="button" data-theme-mode="toggle">toggle</button>
+        </div>
     </header>
 
     <main> <!-- current weather summary -->
-        <article class="mainContainer">
-            <button data-color="blue" accesskey="b" type="button" value="blue">blue</button>
-            <button data-color="purple" accesskey="g" type="button" value="purple">purple</button>
-            <button accesskey="m" type="button" data-theme-mode="toggle">toggle</button>
+        <article class="currentSummary">
+
             <section>
                 <img src="" alt="weather icon image">
                 <h4 id="current-degree">14</div>

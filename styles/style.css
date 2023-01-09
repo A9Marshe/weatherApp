@@ -31,9 +31,49 @@ html[data-theme-mode="dark"][ data-theme-scheme="purple"] {
 }
 
 html {
-    background-color: var(--secondary);
+    background-color: var(--100);
     color: var(--primary);
     transition-timing-function: ease-in;
 
     transition: color 40ms, background-color 150ms;
+}
+
+* {
+    /* border: red solid 1px; */
+    font-family: 'Crimson Pro', ;
+    /* font-size: 48px; */
+}
+
+#header {
+    width: 100%;
+    display: flex;
+    padding: 16px;
+    align-items: center;
+    justify-content: baseline;
+    gap: 200px;
+
+}
+
+button {
+    color: var(--secondary);
+    background-color: var(--primary);
+    padding: 4px;
+    width: 8ch;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 800;
+
+}
+
+button:hover {
+    color: var(--primary);
+    background-color: var(--secondary);
+}
+
+
+.currentSummary {
+    border: lime solid 2px;
+
+    display: flex;
+    flex-direction: row;
 }
