@@ -1,79 +1,114 @@
-html[data-theme-mode="dark"][ data-theme-scheme="blue"] {
-    --primary: #2150C4;
-    --300: #1A3F9D;
-    --200: #143076;
-    --100: #0D204F;
-    --secondary: #071027;
-}
-
-html[data-theme-mode="light"][ data-theme-scheme="blue"] {
-    --primary: #3F6CDF;
-    --300: #6F91E7;
-    --200: #9FB6EF;
-    --100: #CFDAF7;
-    --secondary: #E5EBFB;
-}
-
-html[data-theme-mode="light"][ data-theme-scheme="purple"] {
-    --primary: #C85BE6;
-    --300: #DD99F0;
-    --200: #EAC1F6;
-    --100: #F6E4FB;
-    --secondary: #FBF2FD;
-}
-
-html[data-theme-mode="dark"][ data-theme-scheme="purple"] {
-    --primary: #72158C;
-    --300: #691381;
-    --200: #5E1173;
-    --100: #410C50;
-    --secondary: #2B0835;
-}
-
-html {
-    background-color: var(--100);
-    color: var(--primary);
-    transition-timing-function: ease-in;
-
-    transition: color 40ms, background-color 150ms;
-}
+@import url(buttons.css);
+@import url(themes.css);
 
 * {
-    /* border: red solid 1px; */
-    font-family: 'Crimson Pro', ;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     /* font-size: 48px; */
 }
 
-#header {
+
+body {
+    display: grid;
+    grid-template-areas:
+        'header header header'
+        'main main main'
+        'footer footer footer';
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr min-content;
+    row-gap: 1em;
+
+}
+
+/* START OF HEADER CSS */
+header {
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
     width: 100%;
     display: flex;
-    padding: 16px;
-    align-items: center;
-    justify-content: baseline;
-    gap: 200px;
-
-}
-
-button {
-    color: var(--secondary);
-    background-color: var(--primary);
-    padding: 4px;
-    width: 8ch;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: 800;
-
-}
-
-button:hover {
-    color: var(--primary);
-    background-color: var(--secondary);
-}
-
-
-.currentSummary {
-    border: lime solid 2px;
-
-    display: flex;
     flex-direction: row;
+    align-items: center;
+}
+
+.place-date {
+    padding: .5em;
+    margin-inline-start: 1em;
+    white-space: nowrap;
+}
+
+.themeControls {
+    gap: 1em;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: end;
+    margin-inline-end: 1em;
+    margin-inline-start: auto;
+}
+
+/* END OF HEADER CSS */
+
+main {
+    grid-area: main;
+    display: grid;
+    grid-template-areas:
+        'currentSummary'
+        'section1'
+        'section2 ';
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr) 2fr;
+}
+
+
+/* START OF DAILY SUMMARY */
+.currentSummary {
+    margin-inline-start: 1em;
+    grid-area: currentSummary;
+    display: grid;
+    grid-template-areas: 'sum details details details';
+    grid-template-columns: 15em repeat(3, 1fr);
+    grid-template-rows: 15em
+}
+
+#Layer_1 {
+    width: 100px;
+    height: 100px;
+}
+
+/* START OF DAILY SUMMARY */
+.daySummary {
+    margin-inline-end: 2ch;
+    padding: 2em;
+    border-radius: 2ch;
+    grid-area: sum;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+
+.dayDetails {
+    grid-area: details;
+    display: flex;
+}
+
+.weeklySummary {
+    grid-area: section1;
+}
+
+.detailedHourly {
+    grid-area: section2;
+}
+
+
+footer {
+    grid-area: footer;
+    text-align: center;
+    padding: 1ch;
 }

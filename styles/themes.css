@@ -1,0 +1,65 @@
+[data-theme-mode="dark"][ data-theme-scheme="blue"] {
+    --primary: #2150C4;
+    --300: #1A3F9D;
+    --200: #143076;
+    --100: #0D204F;
+    --secondary: #122862;
+}
+
+html[data-theme-mode="light"][ data-theme-scheme="blue"] {
+    --primary: #3F6CDF;
+    --300: #6F91E7;
+    --200: #9FB6EF;
+    --100: #CFDAF7;
+    --secondary: #E5EBFB;
+}
+
+html[data-theme-mode="light"][ data-theme-scheme="purple"] {
+    --primary: #C85BE6;
+    --300: #DD99F0;
+    --200: #EAC1F6;
+    --100: #F6E4FB;
+    --secondary: #FBF2FD;
+}
+
+html[data-theme-mode="dark"][ data-theme-scheme="purple"] {
+    --primary: #72158C;
+    --300: #691381;
+    --200: #5E1173;
+    --100: #410C50;
+    --secondary: #2B0835;
+}
+
+html {
+    background-color: var(--100);
+    color: var(--primary);
+    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
+    transition: color 40ms, background-color 150ms;
+}
+
+*::selection {
+    color: var(--secondary);
+    background-color: var(--primary);
+}
+
+/* the following classes are used to dynamically apply current theme scheme to SVG icons  */
+
+.--100 {
+    fill: var(--100)
+}
+
+.--200 {
+    fill: var(--200);
+}
+
+.--300 {
+    fill: var(--300);
+}
+
+.secondary {
+    fill: var(--secondary);
+}
+
+.primary {
+    fill: var(--primary)
+}

@@ -3,15 +3,18 @@
 <html lang="en">
 
 <head>
-    <script type="module" src="scripts/main.js"></script>
+
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="a minimal weather app that brings you up-to-date weather information about your current location with forecast and hourly updates">
+    <!-- styling -->
     <link rel="stylesheet" href="styles/style.css">
     <link rel="shortcut icon" href="public/assets/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Pro">
+
+    <!-- Javscript scripts -->
+    <script type="module" src="scripts/main.js"></script>
 
     <title>Alfonso ☁ Weather App</title>
 
@@ -24,26 +27,37 @@
     <meta property="og:type" content="website">
 </head>
 
-<body>
-    <header dir="auto" id="header">
-        <div>
-            <h2 id="current-location" style="text-transform:uppercase;">Latakia</h2>
-            <h3><time datetime="date time">Sunday 8/1/2023 1:00PM </time></h3>
+<body dir="auto">
+    <header class="currentLocation">
+        <div class="place-date">
+            <h1>Lattakia</h1>
+            <p><time datetime="date time">Sunday 8/1/2023 1:00PM </time></p>
         </div>
-        <div><button data-color="blue" accesskey="b" type="button" value="blue">blue</button>
-            <button data-color="purple" accesskey="g" type="button" value="purple">purple</button>
-            <button accesskey="m" type="button" data-theme-mode="toggle">toggle</button>
+        <div class="themeControls">
+            <button class="btn" data-color="blue" accesskey="b" type="button" value="blue">blue</button>
+            <button class="btn" data-color="purple" accesskey="g" type="button" value="purple">purple</button>
+            <button class="btn" data-theme-mode="toggle" accesskey="m" type="button">toggle</button>
         </div>
+
     </header>
-
-    <main> <!-- current weather summary -->
+    <main>
+        <!-- current weather summary -->
         <article class="currentSummary">
+            <section class="daySummary">
+                <div>
+                    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 101.76 122.88">
 
-            <section>
-                <img src="" alt="weather icon image">
-                <h4 id="current-degree">14</div>
+                        <title>water-color</title>
+                        <path class="--100"
+                            d="M63.94,10.12C71.59,42.87,101.76,66.68,101.76,86c0,46.84-68.61,49.07-75.1,6.64a34.53,34.53,0,0,1-5.42-1.12A30.87,30.87,0,0,1,11,86.37C3.92,80.9.68,74.41.1,67.56-.58,59.62,2.39,51.32,7,43.6c1.76-2.94,3.37-5.49,5-8.11,6.34-10,13.49-21.24,16.28-33.31a2.81,2.81,0,0,1,5.47,0c2.81,12,9.95,23.27,16.28,33.25l1.82,2.87C57,29.7,61.58,20.37,63.94,10.12ZM26.19,86.9c0-.3,0-.59,0-.9,0-12.1,11.72-25.82,22.39-42.4-1-1.62-2.12-3.38-3.25-5.17-5.05-7.95-10.59-16.69-14.26-26.18C27.38,21.8,21.82,30.54,16.77,38.5c-1.87,2.93-3.66,5.75-5,8-4,6.79-6.66,14-6.09,20.64.46,5.34,3.05,10.44,8.76,14.84a25.48,25.48,0,0,0,8.36,4.19,27.42,27.42,0,0,0,3.37.77Z" />
+                        <path class="primary"
+                            d="M40.93,80.48a3.84,3.84,0,0,1,7.64-.69,36.87,36.87,0,0,0,3.72,13.84,24.46,24.46,0,0,0,9.54,9.86A3.83,3.83,0,0,1,58,110.1,31.86,31.86,0,0,1,45.5,97.2a44.59,44.59,0,0,1-4.57-16.72Z" />
+                    </svg>
+                </div>
+                <h4 id="current-degree">14 degree</div>
             </section>
-            <section>
+            <section class="dayDetails">
                 <div>High 19</div>
                 <div>Low 12</div>
                 <div> Percepitation 19 </div>
@@ -53,7 +67,7 @@
             </section>
         </article>
         <!--quick week summary-->
-        <section id="weekly-summary">
+        <section class="weeklySummary">
             <article class="weatherCard">
                 <h4>sunday</h4>
                 <p>14</p>
@@ -80,24 +94,24 @@
                 <img src="" alt="">
             </article>
         </section>
-        <section id="detailed-hourly">
+        <section class="detailedHourly">
             <article class="hourlyWeatherCard">
                 <p>right now !</p>
                 <time datetime=""></time>
                 <!-- contenxt menu -->
-                <button>...</button>
+                <button class="btn-square">...</button>
             </article>
             <article class="hourlyWeatherCard">
                 <p>right now !</p>
                 <time datetime=""></time>
 
-                <button>...</button>
+                <button class="btn-square">...</button>
             </article>
             <article class="hourlyWeatherCard">
                 <p>right now !</p>
                 <time datetime=""></time>
 
-                <button>...</button>
+                <button class="btn-square">...</button>
             </article>
         </section>
     </main>
