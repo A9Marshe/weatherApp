@@ -1,3 +1,13 @@
+button {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    /* outline: inherit; */
+}
+
 .btn {
     color: var(--secondary);
     background-color: var(--primary);
@@ -8,10 +18,9 @@
     font-size: 16px;
     font-weight: 800;
     border-radius: 2ch;
-    cursor: pointer;
 
+    outline: 0 solid var(--secondary);
 }
-
 
 .btn-square {
     min-width: 4ch;
@@ -19,10 +28,14 @@
     max-width: 4ch;
     max-height: 4ch;
     border-radius: 1ch;
-
 }
 
 .btn:hover {
+    outline-width: 0.25rem;
+}
+
+
+.btn:active {
     color: var(--primary);
     background-color: var(--secondary);
 }

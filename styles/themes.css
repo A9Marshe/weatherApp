@@ -33,9 +33,13 @@ html[data-theme-mode="dark"][ data-theme-scheme="purple"] {
 html {
     background-color: var(--100);
     color: var(--primary);
-    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
-    transition: color 40ms, background-color 150ms;
+    overflow-y: scroll;
+    scrollbar-color: var(--primary) var(--secondary);
+    scrollbar-width: auto;
+    scroll-behavior: smooth;
+
 }
+
 
 *::selection {
     color: var(--secondary);
@@ -45,21 +49,37 @@ html {
 /* the following classes are used to dynamically apply current theme scheme to SVG icons  */
 
 .--100 {
-    fill: var(--100)
+    fill: var(--100);
+
 }
 
 .--200 {
     fill: var(--200);
+
 }
 
 .--300 {
     fill: var(--300);
+
 }
 
-.secondary {
+.--secondary {
     fill: var(--secondary);
+
 }
 
-.primary {
-    fill: var(--primary)
+.--primary {
+    fill: var(--primary);
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+
+.cold {
+    background-color: #0D204F;
+    color: white;
+}
+
+.hot {
+    background-color: hwb(0 18% 23%);
+    color: white;
 }
