@@ -9,7 +9,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     writing-mode: horizontal-tb;
-    direction: auto;
+    /* direction: auto; */
     transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
     transition: all 40ms, background-color 150ms;
 }
@@ -19,6 +19,8 @@ ul {
 }
 
 body {
+    margin-inline: 1rem;
+    margin-block-end: 1rem;
     display: grid;
     grid-template-areas:
         'header header header'
@@ -36,6 +38,8 @@ svg {
 
 /* START OF HEADER CSS */
 header {
+    margin-block-start: 1em;
+    ;
     grid-area: header;
     display: flex;
     justify-content: space-between;
@@ -115,7 +119,6 @@ main {
     flex-direction: column;
     flex-wrap: wrap;
     max-height: 100%;
-    justify-content: baseline;
     /* align-items: flex-start; */
     /* padding-block: 1rem; */
     max-width: 100%;
