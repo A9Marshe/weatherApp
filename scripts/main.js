@@ -1,12 +1,18 @@
 // the import from DevUtils is used to append styledLog method to the console object for eas of acces while in development
 import { updateThemeMode, updateThemeScheme } from "./Theme.js";
-import { } from "./devUtils.js";
+import {} from "./devUtils.js";
 import { setupLocation } from "./jeoLoc.js";
 import { getDayWeahter } from "./api/get.js";
 
 //assign click event listenrs to buttons with their appropriate function invocations
-document.querySelectorAll("[data-color]").forEach(b => b.addEventListener("click", (e) => updateThemeScheme(e.target.value)));
-document.querySelector("[data-theme-mode = toggle]").addEventListener("click", updateThemeMode)
+document
+  .querySelectorAll("[data-color]")
+  .forEach((b) =>
+    b.addEventListener("click", (e) => updateThemeScheme(e.target.value))
+  );
+document
+  .querySelector("[data-theme-mode = toggle]")
+  .addEventListener("click", updateThemeMode);
 // const svg = document.querySelector("svg  path.cls-1");
 // console.log(svg)
 // // svg.setAttribute('style', "fill:#182094")
@@ -14,32 +20,31 @@ document.querySelector("[data-theme-mode = toggle]").addEventListener("click", u
 
 let lon, lat;
 async function getdatData() {
-    try {
-        let { lon, lat } = await setupLocation();
-        let response = await getDayWeahter(lon, lat);
-        console.styledLog('success', 'got today\'s weather')
-        let res = await response.json();
-        console.table(res)
-        return {
-            "icon_id": res.weather[0],
-            "temp": res.main.temp,
-            "feels_like": res.main.feels_like,
-            "temp_min": res.main.temp_min,
-            "temp_max": res.main.temp_max,
-            "wind_speed": res.wind.speed,
-            "humidity": res.main.humidity,
-            "sea_level": res.main.sea_level,
-            "country": res.sys.country,
-            "city": res.name,
-        }
-        console.table(res);
-    } catch (error) {
-        console.styledLog('error', 'unable to get today\'s weather');
-        console.log(error)
-    }
+  try {
+    let { lon, lat } = await setupLocation();
+    let response = await getDayWeahter(lon, lat);
+    console.styledLog("success", "got today's weather");
+    let res = await response.json();
+    console.table(res);
+    return {
+      icon_id: res.weather[0],
+      temp: res.main.temp,
+      feels_like: res.main.feels_like,
+      temp_min: res.main.temp_min,
+      temp_max: res.main.temp_max,
+      wind_speed: res.wind.speed,
+      humidity: res.main.humidity,
+      sea_level: res.main.sea_level,
+      country: res.sys.country,
+      city: res.name,
+    };
+    console.table(res);
+  } catch (error) {
+    console.styledLog("error", "unable to get today's weather");
+    console.styledLog("error", error);
+  }
 }
-getdatData()
-
+getdatData();
 
 // let app = document.querySelector('header');
 
@@ -52,7 +57,6 @@ getdatData()
 // // body.removeChild(button)
 // console.log(place);
 // place.prepend(button);
-
 
 // button.remove();// let langs = ['CSS', 'JavaScript', 'TypeScript'];
 
