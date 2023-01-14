@@ -25,29 +25,28 @@ async function getdatData() {
   try {
     let { lon, lat } = await setupLocation();
     let response = await getDayWeahter(lon, lat);
-    console.styledLog('success', 'got today\'s weather')
+    console.styledLog("success", "got today's weather");
     let res = await response.json();
-    console.table(res)
+    console.table(res);
     return {
-      "icon_id": res.weather[0],
-      "temp": res.main.temp,
-      "feels_like": res.main.feels_like,
-      "temp_min": res.main.temp_min,
-      "temp_max": res.main.temp_max,
-      "wind_speed": res.wind.speed,
-      "humidity": res.main.humidity,
-      "sea_level": res.main.sea_level,
-      "country": res.sys.country,
-      "city": res.name,
-    }
+      icon_id: res.weather[0],
+      temp: res.main.temp,
+      feels_like: res.main.feels_like,
+      temp_min: res.main.temp_min,
+      temp_max: res.main.temp_max,
+      wind_speed: res.wind.speed,
+      humidity: res.main.humidity,
+      sea_level: res.main.sea_level,
+      country: res.sys.country,
+      city: res.name,
+    };
     console.table(res);
   } catch (error) {
-    console.styledLog('error', 'unable to get today\'s weather');
-    console.log(error)
+    console.styledLog("error", "unable to get today's weather");
+    console.styledLog("error", error);
   }
 }
-getdatData()
-
+getdatData();
 
 // let app = document.querySelector('header');
 
@@ -60,7 +59,6 @@ getdatData()
 // // body.removeChild(button)
 // console.log(place);
 // place.prepend(button);
-
 
 // button.remove();// let langs = ['CSS', 'JavaScript', 'TypeScript'];
 
