@@ -39,3 +39,34 @@ button:hover {
     background-color: var(--secondary);
     outline-color: var(--primary);
 }
+
+
+#themeSwitch {
+    cursor: pointer;
+    background-color: var(--primary);
+    display: flex;
+    border-radius: 40ch;
+    aspect-ratio: 2;
+    height: 1.5rem;
+    transition: 200ms;
+}
+
+
+#themeSwitch * {
+    /* transition: 2s; */
+    /* margin-inline-start: 5ch; */
+    display: block;
+    /* margin-inline: .5ch; */
+    /* outline: 4px solid limegreen; */
+    margin-block: auto;
+    margin-inline: .5ch;
+    aspect-ratio: 1;
+    height: 0.8rem;
+    background-color: var(--secondary);
+    border-radius: 10rem;
+}
+
+#themeSwitch[theme-mode="dark"] * {
+    transform: translateX(200%);
+
+}
