@@ -1,9 +1,9 @@
 // the import from DevUtils is used to append styledLog method to the console object for eas of acces while in development
 import { updateThemeMode, updateThemeScheme } from "./Theme.js";
-import {} from "./devUtils.js";
+import { } from "./devUtils.js";
 import { setupLocation } from "./jeoLoc.js";
-import { getDayWeahter } from "./api/get.js";
-
+import { getHourlyData } from "./api/getHourly.js"
+import { getdayData } from "./api/getCurrentWeather.js"
 //assign click event listenrs to buttons with their appropriate function invocations
 document
   .querySelectorAll("[data-color]")
@@ -17,34 +17,13 @@ document
 // console.log(svg)
 // // svg.setAttribute('style', "fill:#182094")
 // document.querySelector('#button').addEventListener('click', getCoord);
+let { lon, lat } = await setupLocation();
+getdayData({ lon, lat })
 
-let lon, lat;
-async function getdatData() {
-  try {
-    let { lon, lat } = await setupLocation();
-    let response = await getDayWeahter(lon, lat);
-    console.styledLog("success", "got today's weather");
-    let res = await response.json();
-    console.table(res);
-    return {
-      icon_id: res.weather[0],
-      temp: res.main.temp,
-      feels_like: res.main.feels_like,
-      temp_min: res.main.temp_min,
-      temp_max: res.main.temp_max,
-      wind_speed: res.wind.speed,
-      humidity: res.main.humidity,
-      sea_level: res.main.sea_level,
-      country: res.sys.country,
-      city: res.name,
-    };
-    console.table(res);
-  } catch (error) {
-    console.styledLog("error", "unable to get today's weather");
-    console.styledLog("error", error);
-  }
-}
-getdatData();
+// let icon = await fetch(` http://openweathermap.org/img/wn/${currentweather.icon_id}d@2x.png`)
+
+// getHourlyData({ lon, lat });
+// getHourlyData({ lon, lat });
 
 // let app = document.querySelector('header');
 

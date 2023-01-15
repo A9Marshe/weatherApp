@@ -7,7 +7,7 @@ export const setupLocation = async () => {
         console.table({ lon, lat })
         return { lat, lon };
     } catch (e) {
-        console.warn(e)
+        console.error(e)
     }
 }
 
