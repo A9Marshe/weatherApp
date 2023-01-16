@@ -20,16 +20,19 @@ document
   .forEach((b) =>
     b.addEventListener("click", (e) => updateThemeScheme(e.target.value))
   );
-document
-  .querySelector("[data-theme-mode = toggle]")
-  .addEventListener("click", updateThemeMode);
 // const svg = document.querySelector("svg  path.cls-1");
 // console.log(svg)
 // // svg.setAttribute('style', "fill:#182094")
 // document.querySelector('#button').addEventListener('click', getCoord);
 let { lon, lat } = await setupLocation();
-getdayData({ lon, lat })
+console.styledLog("info", "getting day data");
 
+async function setupDayData({ lon, lat }) {
+  let res = await getdayData({ lon, lat });
+  // res = Array.from(res);
+  console.table(res)
+}
+setupDayData({ lon, lat })
 // let icon = await fetch(` http://openweathermap.org/img/wn/${currentweather.icon_id}d@2x.png`)
 
 // getHourlyData({ lon, lat });
