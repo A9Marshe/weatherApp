@@ -1,9 +1,9 @@
-import { __AAPID } from "./secrets.js";
+import { __APPID } from "./secrets.js";
 let lang = 'en', weatherUnit = "metric"
 export let getDayWeahter = async function (lon, lat) {
     let weatherData;
     try {
-        weatherData = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${__AAPID}&units=${weatherUnit}&lang=${lang}`)
+        weatherData = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${__APPID}&units=${weatherUnit}&lang=${lang}`)
         console.styledLog('info', 'fetched weather data');
         return weatherData;
 
