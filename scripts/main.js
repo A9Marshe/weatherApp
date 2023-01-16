@@ -15,6 +15,14 @@ document.getElementById('theme-scheme-select').addEventListener('change', (e) =>
   updateThemeScheme(e.target.value)
 })
 
+document
+  .querySelectorAll("[data-color]")
+  .forEach((b) =>
+    b.addEventListener("click", (e) => updateThemeScheme(e.target.value))
+  );
+document
+  .querySelector("[data-theme-mode = toggle]")
+  .addEventListener("click", updateThemeMode);
 // const svg = document.querySelector("svg  path.cls-1");
 // console.log(svg)
 // // svg.setAttribute('style', "fill:#182094")
