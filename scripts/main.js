@@ -10,16 +10,11 @@ document
   .forEach((b) =>
     b.addEventListener("click", (e) => updateThemeScheme(e.target.value))
   );
-document
-  .querySelector("[data-theme-mode = toggle]")
-  .addEventListener("click", updateThemeMode);
 
-document.getElementById('themeSwitch').addEventListener('click', () => {
-  updateThemeMode();
-  let toggle = document.getElementById('themeSwitch');
-  let current = localStorage.getItem('theme-mode')
-  toggle.setAttribute('theme-mode', current)
+document.getElementById('theme-scheme-select').addEventListener('change', (e) => {
+  updateThemeScheme(e.target.value)
 })
+
 // const svg = document.querySelector("svg  path.cls-1");
 // console.log(svg)
 // // svg.setAttribute('style', "fill:#182094")

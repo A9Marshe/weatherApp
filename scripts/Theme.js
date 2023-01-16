@@ -13,9 +13,21 @@ window.addEventListener('DOMContentLoaded', (event) => {
     //init theme mode
     let localthemeMode = localStorage.getItem('theme-mode') == null ? "light" : localStorage.getItem('theme-mode');
     html.setAttribute('data-theme-mode', localthemeMode);
+    if (localthemeMode === "dark") document.getElementById("theme-switch").setAttribute('active', 'active')
 
 
 })();
+
+
+//Theme switch toggle button
+document.getElementById('theme-switch').addEventListener('click', () => {
+    updateThemeMode();
+    let toggle = document.getElementById('theme-switch');
+    let current = localStorage.getItem('theme-mode');
+    if (current === 'dark')
+        toggle.setAttribute('active', 'active')
+    else toggle.removeAttribute('active')
+})
 
 export let updateThemeMode = () => {
     const html = document.firstElementChild;

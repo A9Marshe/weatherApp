@@ -1,5 +1,6 @@
 @import url(buttons.css);
 @import url(themes.css);
+@import url(switch.css);
 
 /* UNIVERSAL RESETTER */
 * {
@@ -35,6 +36,9 @@ body {
 svg {
     aspect-ratio: 1;
 }
+
+
+
 
 /* START OF HEADER CSS */
 header {
