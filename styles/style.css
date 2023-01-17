@@ -271,8 +271,12 @@ html[data-theme-mode="dark"] .dataChip {
 }
 
 
-
 footer {
+    font-weight: bold;
+    color: var(--secondary);
+    background-color: var(--primary);
+    border-end-start-radius: 1rem;
+    border-end-end-radius: 1rem;
     grid-area: footer;
     text-align: center;
     padding: 1ch;
