@@ -15,19 +15,38 @@ window.addEventListener('DOMContentLoaded', (event) => {
     html.setAttribute('data-theme-mode', localthemeMode);
     if (localthemeMode === "dark") document.getElementById("theme-switch").setAttribute('active', 'active')
 
-
 })();
 
 
+//assign click event listenrs to buttons with their appropriate function invocations
+(() => {
+    document
+        .querySelectorAll("[data-color]")
+        .forEach((b) =>
+            b.addEventListener("click", (e) => updateThemeScheme(e.target.value))
+        );
+    document.getElementById('theme-scheme-select').addEventListener('change', (e) => {
+        updateThemeScheme(e.target.value)
+    })
+
+    document
+        .querySelectorAll("[data-color]")
+        .forEach((b) =>
+            b.addEventListener("click", (e) => updateThemeScheme(e.target.value))
+        );
+    document.getElementById('theme-switch').addEventListener('click', () => {
+        updateThemeMode();
+        let toggle = document.getElementById('theme-switch');
+        let current = localStorage.getItem('theme-mode');
+        if (current === 'dark')
+            toggle.setAttribute('active', 'active')
+        else toggle.removeAttribute('active')
+    })
+})()
+
+
 //Theme switch toggle button
-document.getElementById('theme-switch').addEventListener('click', () => {
-    updateThemeMode();
-    let toggle = document.getElementById('theme-switch');
-    let current = localStorage.getItem('theme-mode');
-    if (current === 'dark')
-        toggle.setAttribute('active', 'active')
-    else toggle.removeAttribute('active')
-})
+
 
 export let updateThemeMode = () => {
     const html = document.firstElementChild;

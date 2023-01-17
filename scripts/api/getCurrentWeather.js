@@ -1,52 +1,39 @@
-//loader component reference, this component is used to signal that JS is fetching certain resource(s)
-const loaderComponent = '<div class="loader-element"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>'
-
 
 export async function getdayData({ lon, lat, lang = "en", weatherUnit = "metric" }) {
   try {
-    // appending loaders
+    //setting up relavent html nodes references
     let currentLocation = document.getElementById('current-location');
     let daySum = document.getElementById('day-summary')
     let dayDetails = document.getElementById("day-details");
 
-    daySum.innerHTML = loaderComponent;
-    currentLocation.innerHTML = loaderComponent;
-    dayDetails.innerHTML = loaderComponent;
+    //rendering loaders
+    currentLocation.innerHTML = loaderComponent('loader-currentLocation');
+    daySum.innerHTML = loaderComponent('loader-daySum');
+    dayDetails.innerHTML = loaderComponent('loader-dayDetails');
 
     //fetching data and storing result in proper objects
     const { CurrentCity_Dt, currentSummary, currentDetails } = await __getDayWeahter({ lon, lat, weatherUnit });
     console.styledLog("success", "got today's weather, updating UI");
 
-    //this is for the city, country, and current date
-    currentLocation.innerHTML =
-      `<div class="place-date">
-    <h1 id="current-location-name">${CurrentCity_Dt.city}, ${CurrentCity_Dt.country}</h1>
-    <p title="${CurrentCity_Dt.date}"><time id="date-time" datetime="${CurrentCity_Dt.date}">${new Date(CurrentCity_Dt.date).toDateString()
-      }</time ></p >
-    </div > `
+    //rendering city & date
+    document.getElementById("loader-currentLocation").remove()
+    currentLocation.innerHTML += __setLocationAndDate({ CurrentCity_Dt });
 
+    //rendering day summary
+    document.getElementById('loader-dayDetails').remove()
+    daySum.innerHTML = __setDaySummary({ currentSummary });
 
-    //set up today summary card (icon and current degrees)
-    daySum.innerHTML = `<div><img src="http://openweathermap.org/img/wn/${currentSummary.icon_id}@2x.png" alt="${currentSummary.description}" title="${currentSummary.description}" ></div><h4> ${currentSummary.temp}&deg; C</h4>`
-
-    // setup today details cars 
-    // dayDetails.innerHTML =
-    //   `<ol><div class="day-detail-entry" translate="no"> <p> more info provided by </p> <p><a href="">weatherapi</a> </p> </div></li></ol>`
+    //rendering day details
     for (const [key, value] of Object.entries(currentDetails)) {
-      dayDetails.innerHTML += ` <div class="day-detail-entry"><p>${key}</p><p class="dataChip --primary">${value}</p></div>
-      `
-
+      dayDetails.innerHTML += __setDayDetails({ key, value });
     }
     dayDetails.innerHTML += `<ol><div class="day-detail-entry" translate="no"> <p> more info provided by </p> <p><a href="https://openweathermap.org/weather-conditions">OpenWeatherAPI</a> </p> </div></li></ol>`
 
-    // return res;
   } catch (error) {
     console.styledLog('error', 'error occured while loading day data')
     console.error(error);
   }
 }
-
-
 var __getDayWeahter = async function ({ lon, lat, lang, weatherUnit }) {
   try {
     let { __APPID } = await import("./secrets.js");
@@ -82,3 +69,32 @@ var __getDayWeahter = async function ({ lon, lat, lang, weatherUnit }) {
     console.log(error);
   }
 };
+
+
+//loader component reference, this component is used to signal that JS is fetching certain resource(s)
+const loaderComponent = (id) => {
+  return `<div id="${id}" class="loader-element"><div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div></div>`
+}
+
+const __setLocationAndDate = ({ CurrentCity_Dt }) => {
+  let city = CurrentCity_Dt.city,
+    date = CurrentCity_Dt.date,
+    country = CurrentCity_Dt.country;
+  return `<div class="place-date">
+  <h1 id="current-location-name">${city}, ${country}</h1>
+  <p title="${date}"><time id="date-time" datetime="${date}">${new Date(date).toDateString()
+    }</time ></p >
+  </div > `
+}
+
+const __setDaySummary = ({ currentSummary }) => {
+  let icon_id = currentSummary.icon_id,
+    description = currentSummary.description,
+    temp = currentSummary.temp;
+  return `<div><img src="http://openweathermap.org/img/wn/${icon_id}@2x.png" alt="${description}" title="${description}" ></div><h4> ${temp}&deg; C</h4>`
+
+}
+
+const __setDayDetails = ({ key, value }) => {
+  return ` <div class="day-detail-entry"><p>${key}</p><p class="dataChip --primary">${value}</p></div>`
+}

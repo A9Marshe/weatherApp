@@ -115,7 +115,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: var(--primary);
+    background: linear-gradient(360deg, var(--primary) 0%, var(--secondary) 100%);
     color: var(--secondary);
 }
 
@@ -124,6 +124,7 @@ main {
     grid-area: details;
     display: flex;
     flex-direction: column;
+
     flex-wrap: wrap;
     max-height: 100%;
     /* align-items: flex-start; */
@@ -131,8 +132,15 @@ main {
     max-width: 100%;
 }
 
+img {
+    background-color: var(--300);
+    border-radius: 100px;
+    box-shadow: 0 .25rem .4rem var(--200);
+
+}
+
 .day-detail-entry {
-    width: clamp(30ch, 40%, 25ch);
+    width: clamp(30ch, 40%, 30ch);
     /* height: clamp(6ch, 20%, 12ch); */
     white-space: nowrap;
     display: flex;
@@ -151,7 +159,7 @@ main {
 
 
 
-}
+
 
 .dayDetails p {
     width: fit-content;
@@ -161,53 +169,53 @@ main {
 
 .dataChip {
 
+    font-size: .9rem;
     border-radius: 5px;
     padding-inline: 10px;
 }
 
+
+html[data-theme-mode="dark"] .dataChip {
+    outline: solid rgb(255, 255, 255, .5) .1rem;
+}
+
 .weeklySummary {
-    border-top: .3rem var(--primary) solid;
-    padding-block: 2rem;
     grid-area: section1;
+    border-top: .3rem var(--primary) solid;
+    margin-block-end: 2rem;
+    padding-block: 2rem;
     margin-inline: auto;
     padding-inline: 2rem;
     display: flex;
     flex-wrap: wrap;
     gap: 3ch;
     width: 100%;
+    /* justify-content: space-evenly; */
     justify-content: space-evenly;
-    align-items: flex-start;
 }
 
 
 
 .weatherCard {
-    padding-inline-start: 1ch;
+    height: 6rem;
+    padding-inline-start: 2ch;
     padding-inline-end: 4ch;
     transition: all 200ms;
     outline: .5ch solid var(--300);
     border-radius: 2ch;
     display: flex;
     flex-direction: row;
-    height: 2rem;
     aspect-ratio: 1.5;
     column-gap: 1ch;
     padding-block: 4ch;
     align-items: center;
     background-color: var(--primary);
     color: var(--secondary);
+    /* justify-content: space-between; */
 }
-
-.weatherCard svg {
-    width: 6ch;
-    aspect-ratio: 1;
-}
-
 
 .weatherCard:hover {
     outline-offset: 0.25em;
-    /* outline-color: orange; */
-    /* outline-width: 10px; */
     cursor: pointer;
 
 }
@@ -216,18 +224,21 @@ main {
     outline-offset: 0;
 }
 
+.weatherCard[active='active'] {
+    outline-offset: 0.25em;
+
+}
+
+.weatherCard .weather-icon {
+    width: 3rem;
+    border-radius: .5rem;
+}
 
 .section3 {
     min-width: 95vw;
     margin-inline: auto;
     grid-area: section2;
 }
-
-.active-card {
-    outline-offset: 0.25em;
-}
-
-
 
 .detailedHourly {
     margin-inline: auto;
@@ -259,11 +270,7 @@ main {
     border-radius: 1em;
 }
 
-.weather-icon {
-    /* margin-inline-end: auto; */
-    width: 2rem;
-    aspect-ratio: 1;
-}
+
 
 footer {
     grid-area: footer;

@@ -54,3 +54,8 @@ button:hover {
     border-radius: 10rem;
     text-align: center;
 }
+
+.btn svg {
+    margin-block: auto;
+    aspect-ratio: 1;
+}

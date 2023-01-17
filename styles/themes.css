@@ -65,7 +65,8 @@ html {
 
 .--secondary {
     fill: var(--secondary);
-
+    background-color: var(--secondary);
+    color: darkgray
 }
 
 .--primary {
@@ -76,10 +77,14 @@ html {
 
 .cold {
     background-color: #0D204F;
-    color: white;
+    color: seashell;
 }
 
 .hot {
-    background-color: hwb(0 18% 23%);
-    color: white;
+    background-color: hwb(0 7% 32%);
+    color: seashell;
+}
+
+svg {
+    fill: var(--secondary)
 }
