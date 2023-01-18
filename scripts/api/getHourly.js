@@ -117,6 +117,7 @@ const __setWeekDaySummary = (weekDay, eventHandlerIdentifier) => {
         main = Math.round(weekDay.main) + "&degC";
     let daySummary = document.createElement('article');
     daySummary.classList = 'weatherCard'
+    daySummary.style = `--animation-order:${eventHandlerIdentifier}`
     daySummary.innerHTML = ` <img class="weather-icon" src="http://openweathermap.org/img/wn/${icon_id}@2x.png" alt="${description}" title="${description}">
     <div><h4>${day}</h4>
     <span style="white-space: nowrap;">${description}</span>
@@ -150,16 +151,18 @@ const __setWeekDayDetails = (day, id) => {
     detailedHourly.innerHTML = "";
     // console.log(detailedHourly)
     day = Array.from(day)
+    let animationOffset = 0
     day.forEach(hour => {
-        detailedHourly.appendChild(__setDayHour(hour))
+        detailedHourly.appendChild(__setDayHour(hour, animationOffset++))
     });
     let DayHours = document.createElement('article');
 }
-const __setDayHour = (hourData) => {
+const __setDayHour = (hourData, animationOffset = 0) => {
     const { Maximum, Minimum, description, hour, day, state, icon_id } = hourData;
 
     let DayHours = document.createElement('article');
     DayHours.classList = "hourlyWeatherCard"
+    DayHours.style = `--animation-order:${animationOffset};`
     DayHours.innerHTML = `<img class="weather-icon" src="http://openweathermap.org/img/wn/${icon_id}@2x.png" alt="${description}" title="${description}">
     <h4>${day}: ${state}</h4>
     <span><time datetime="${hour}">${hour}</time></span>

@@ -1,5 +1,6 @@
 
 export async function getdayData({ lon, lat, lang = "en", weatherUnit = "metric" }) {
+  let animationOffset = 0;
   try {
     //setting up relavent html nodes references
     let currentLocation = document.getElementById('current-location');
@@ -25,9 +26,9 @@ export async function getdayData({ lon, lat, lang = "en", weatherUnit = "metric"
 
     //rendering day details
     for (const [key, value] of Object.entries(currentDetails)) {
-      dayDetails.innerHTML += __setDayDetails({ key, value });
+      dayDetails.innerHTML += __setDayDetails({ key, value }, animationOffset++);
     }
-    dayDetails.innerHTML += `<ol><div class="day-detail-entry" translate="no"> <p> more info provided by </p> <p><a href="https://openweathermap.org/weather-conditions">OpenWeatherAPI</a> </p> </div></li></ol>`
+    dayDetails.innerHTML += `<ol><div style="--animation-order: ${animationOffset};" class="day-detail-entry" translate="no"> <p> more info provided by </p> <p><a href="https://openweathermap.org/weather-conditions">OpenWeatherAPI</a> </p> </div></li></ol>`
 
   } catch (error) {
     console.styledLog('error', 'error occured while loading day data')
@@ -80,7 +81,7 @@ const __setLocationAndDate = ({ CurrentCity_Dt }) => {
   let city = CurrentCity_Dt.city,
     date = CurrentCity_Dt.date,
     country = CurrentCity_Dt.country;
-  return `<div class="place-date">
+  return `<div  class="place-date" >
   <h1 id="current-location-name">${city}, ${country}</h1>
   <p title="${date}"><time id="date-time" datetime="${date}">${new Date(date).toDateString()
     }</time ></p >
@@ -94,7 +95,6 @@ const __setDaySummary = ({ currentSummary }) => {
   return `<div><img src="http://openweathermap.org/img/wn/${icon_id}@2x.png" alt="${description}" title="${description}" ></div><h4> ${temp}&deg; C</h4>`
 
 }
-
-const __setDayDetails = ({ key, value }) => {
-  return ` <div class="day-detail-entry"><p>${key}</p><p class="dataChip --primary">${value}</p></div>`
+const __setDayDetails = ({ key, value }, animationOffset = 0) => {
+  return ` <div style="--animation-order: ${animationOffset++};" class="day-detail-entry"><p>${key}</p><p class="dataChip --primary">${value}</p></div>`
 }

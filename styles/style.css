@@ -2,6 +2,42 @@
 @import url(switch.css);
 @import url(buttons.css);
 
+
+/* ANIMATIONS */
+@keyframes drop-from-corner {
+    0% {
+        opacity: 0%;
+        transform: translateX(-4rem)
+    }
+
+    100% {
+        opacity: 100%;
+    }
+
+}
+
+@keyframes slide-in-left {
+    0% {
+        transform: translateY(-2rem);
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0%;
+        transform: translateX(-4rem)
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
 /* UNIVERSAL RESETTER */
 * {
     margin: 0;
@@ -10,9 +46,7 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 18px;
     writing-mode: horizontal-tb;
-    /* direction: auto; */
-    transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1);
-    transition: all 40ms, background-color 150ms;
+    transition: all 40ms ease-out, background-color 120ms;
 }
 
 
@@ -37,10 +71,6 @@ body {
     grid-template-rows: min-content 1fr min-content;
     row-gap: 1em;
 
-}
-
-svg {
-    aspect-ratio: 1;
 }
 
 
@@ -115,8 +145,9 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(360deg, var(--primary) 0%, var(--secondary) 100%);
+    background: linear-gradient(60deg, var(--primary) 0%, var(--secondary) 100%);
     color: var(--secondary);
+
 }
 
 
@@ -136,12 +167,11 @@ img {
     background-color: var(--300);
     border-radius: 100px;
     box-shadow: 0 .25rem .4rem var(--200);
-
 }
 
 .day-detail-entry {
+    opacity: 0%;
     width: clamp(30ch, 40%, 30ch);
-    /* height: clamp(6ch, 20%, 12ch); */
     white-space: nowrap;
     display: flex;
     flex-wrap: wrap;
@@ -153,8 +183,9 @@ img {
     margin: 4px;
     font-weight: 600;
     padding: 0.8rem;
-    /* animation-duration: 3s;
-    animation-name: slidein; */
+    animation: drop-from-corner 200ms ease-out;
+    animation-delay: calc(var(--animation-order) * 75ms);
+    animation-fill-mode: forwards;
 }
 
 
@@ -197,10 +228,10 @@ html[data-theme-mode="dark"] .dataChip {
 
 
 .weatherCard {
+    opacity: 0%;
     height: 6rem;
     padding-inline-start: 2ch;
     padding-inline-end: 4ch;
-    transition: all 200ms;
     outline: .5ch solid var(--300);
     border-radius: 2ch;
     display: flex;
@@ -211,7 +242,9 @@ html[data-theme-mode="dark"] .dataChip {
     align-items: center;
     background-color: var(--primary);
     color: var(--secondary);
-    /* justify-content: space-between; */
+    animation: slide-in-left 1s;
+    animation-delay: calc(var(--animation-order) * 75ms);
+    animation-fill-mode: forwards;
 }
 
 .weatherCard:hover {
@@ -246,6 +279,8 @@ html[data-theme-mode="dark"] .dataChip {
 }
 
 .hourlyWeatherCard {
+    opacity: 0%;
+    animation: fade-in 300ms calc(var(--animation-order) * 70ms) forwards;
     background-color: var(--secondary);
     padding: 1rem;
     border-radius: 1rem;
