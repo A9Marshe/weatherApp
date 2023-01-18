@@ -41,7 +41,7 @@ You need to take a few steps in order to run Alfonso currectly:
 
 7. once prompted, allow Alfonso to access your location
 
-_this information is needed to deliver accurate weather data; no other information is collected or sent to any 3-rd parties_
+_this information is needed to deliver accurate weather data; no other information is collected or sent to any 3rd parties_
 
 8. 🥳 Now you can enjoy using Alfonso, Hurray!
 
@@ -49,8 +49,12 @@ _this information is needed to deliver accurate weather data; no other informati
 
 ## 💁‍♂️ more information on Alfonso
 
-✉ Currently, Alfonso only supports English but it was built to support both LTR and RTL languages in a future release. Also, the current HTML elements and ARIA-labels are sufficient enough and we're eager for your feedback (remember that this is a beta release and some stuff will surely be changed in the final release)
+✉ Currently, Alfonso only supports English but it was built to support both LTR and RTL languages in a future release. Also, the current HTML elements and ARIA-labels are NOT sufficient enough and we're eager for your feedback (remember that this is a beta release and some stuff will surely be changed in the final release)
+
+✉ As for theme and dark/light mode, Alfonso support dark/light mode for two themes (blue and purple). For Future versions the user would be able to dynamically set their theme scheme by providing a certain color value (Alfonso will use a 3rd party api to generate the theme scheme color palette) and Alfonso will offer more types of themes (seasonal and occasional themes, contrast themes, color-blind friendly themes).
 
 📩 I chose OpenWeatherMap API because I was not able to get access to proper APIs with methods that fullfill original goals of Alfonso. You will notice that each hourly forecast will be seperated by 3 hours interval instead of one (this is available in the API but behind a paywall).
 
-😙 Some aspects of Alfonso could be even more optimized but the API paywall prevents access to proper API methods
+😙 Some aspects of Alfonso can be even more optimized but the API paywall prevents access to proper API methods
+
+🦻 A more accessible version of Alfonso is under development but it wasn't ready for this release, the next version should allow for a more convinient Screen reader experience as well as a reacher 🖨 print experience for uses who wish to get a printed detailed report of the weather forecast
