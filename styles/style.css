@@ -224,7 +224,7 @@ html[data-theme-mode="dark"] .dataChip {
     outline-offset: 0;
 }
 
-.weatherCard[active='active'] {
+.weatherCard[activeDay='active'] {
     outline-offset: 0.25em;
 
 }
@@ -234,11 +234,6 @@ html[data-theme-mode="dark"] .dataChip {
     border-radius: .5rem;
 }
 
-.section3 {
-    min-width: 95vw;
-    margin-inline: auto;
-    grid-area: section2;
-}
 
 .detailedHourly {
     margin-inline: auto;
@@ -251,7 +246,12 @@ html[data-theme-mode="dark"] .dataChip {
 }
 
 .hourlyWeatherCard {
-    margin-inline-end: auto;
+    background-color: var(--secondary);
+    padding: 1rem;
+    border-radius: 1rem;
+    outline: 0.5ch solid var(--200);
+    width: 15rem;
+    /* margin-inline-end: auto;
     height: 4rem;
     padding-inline: 1rem;
     background-color: var(--secondary);
@@ -260,7 +260,7 @@ html[data-theme-mode="dark"] .dataChip {
     display: flex;
     align-items: center;
     min-width: 60ch;
-    justify-content: space-between;
+    justify-content: space-between; */
 }
 
 .hourlyWeatherCard .weather-icon {

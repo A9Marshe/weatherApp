@@ -16,9 +16,11 @@ console.styledLog("info", "getting day data");
 async function setupDayData({ lon, lat }) {
   let res = await getdayData({ lon, lat });
   // res = Array.from(res);
-  console.table(res)
 }
-setupDayData({ lon, lat })
+getdayData({ lon, lat })
 getHourlyData({ lon, lat })
 
-document.getElementById('button-update').addEventListener('click', () => { setupDayData({ lon, lat }) })
+document.getElementById('button-update').addEventListener('click', () => {
+  getdayData({ lon, lat });
+  getHourlyData({ lon, lat })
+})
