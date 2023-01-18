@@ -1,0 +1,318 @@
+@import url(themes.css);
+@import url(switch.css);
+@import url(buttons.css);
+
+
+/* ANIMATIONS */
+@keyframes drop-from-corner {
+    0% {
+        opacity: 0%;
+        transform: translateX(-4rem)
+    }
+
+    100% {
+        opacity: 100%;
+    }
+
+}
+
+@keyframes slide-in-left {
+    0% {
+        transform: translateY(-2rem);
+        opacity: 0%;
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0%;
+        transform: translateX(-4rem)
+    }
+
+    100% {
+        opacity: 100%;
+    }
+}
+
+/* UNIVERSAL RESETTER */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 18px;
+    writing-mode: horizontal-tb;
+    transition: all 40ms ease-out, background-color 120ms;
+}
+
+
+ul,
+ol {
+    appearance: none;
+    list-style: none;
+}
+
+
+
+
+body {
+    margin-inline: 1rem;
+    margin-block-end: 1rem;
+    display: grid;
+    grid-template-areas:
+        'header header header'
+        'main main main'
+        'footer footer footer';
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr min-content;
+    row-gap: 1em;
+
+}
+
+
+
+
+/* START OF HEADER CSS */
+header {
+    margin-block-start: 1em;
+    ;
+    grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.place-date {
+    padding: .5em;
+    margin-inline-start: 1em;
+    white-space: nowrap;
+}
+
+.themeControls {
+    gap: 1em;
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: end;
+    margin-inline-end: 1em;
+    margin-inline-start: auto;
+}
+
+/* END OF HEADER CSS */
+main {
+    grid-area: main;
+    display: grid;
+    grid-template-areas:
+        'currentSummary'
+        'section1'
+        'section2 ';
+    grid-template-columns: 1fr;
+    /* grid-template-rows: repeat(2, 1fr) fr; */
+}
+
+
+/* START OF DAILY SUMMARY */
+.currentSummary {
+    margin-inline: 1em;
+    grid-area: currentSummary;
+    display: grid;
+    align-items: center;
+    grid-template-areas: 'sum  details ';
+    grid-template-columns: min-content 1fr;
+    grid-template-rows: 12rem;
+    column-gap: 1rem;
+}
+
+
+
+
+/* START OF DAILY SUMMARY */
+.daySummary {
+
+    text-align: center;
+    aspect-ratio: 1;
+    width: 10rem;
+    padding: 1rem;
+    border-radius: 2ch;
+    grid-area: sum;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(60deg, var(--primary) 0%, var(--secondary) 100%);
+    color: var(--secondary);
+
+}
+
+
+.dayDetails {
+    grid-area: details;
+    display: flex;
+    flex-direction: column;
+
+    flex-wrap: wrap;
+    max-height: 100%;
+    /* align-items: flex-start; */
+    /* padding-block: 1rem; */
+    max-width: 100%;
+}
+
+img {
+    background-color: var(--300);
+    border-radius: 100px;
+    box-shadow: 0 .25rem .4rem var(--200);
+}
+
+.day-detail-entry {
+    opacity: 0%;
+    width: clamp(30ch, 40%, 30ch);
+    white-space: nowrap;
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 1ch;
+    justify-content: space-between;
+    border-radius: 1rem;
+    background-color: var(--secondary);
+    color: var(--primary);
+    margin: 4px;
+    font-weight: 600;
+    padding: 0.8rem;
+    animation: drop-from-corner 200ms ease-out;
+    animation-delay: calc(var(--animation-order) * 75ms);
+    animation-fill-mode: forwards;
+}
+
+
+
+
+
+.dayDetails p {
+    width: fit-content;
+    margin-inline: 1em;
+
+}
+
+.dataChip {
+
+    font-size: .9rem;
+    border-radius: 5px;
+    padding-inline: 10px;
+}
+
+
+html[data-theme-mode="dark"] .dataChip {
+    outline: solid rgb(255, 255, 255, .5) .1rem;
+}
+
+.weeklySummary {
+    grid-area: section1;
+    border-top: .3rem var(--primary) solid;
+    margin-block-end: 2rem;
+    padding-block: 2rem;
+    margin-inline: auto;
+    padding-inline: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3ch;
+    width: 100%;
+    /* justify-content: space-evenly; */
+    justify-content: space-evenly;
+}
+
+
+
+.weatherCard {
+    opacity: 0%;
+    height: 6rem;
+    padding-inline-start: 2ch;
+    padding-inline-end: 4ch;
+    outline: .5ch solid var(--300);
+    border-radius: 2ch;
+    display: flex;
+    flex-direction: row;
+    aspect-ratio: 1.5;
+    column-gap: 1ch;
+    padding-block: 4ch;
+    align-items: center;
+    background-color: var(--primary);
+    color: var(--secondary);
+    animation: slide-in-left 1s;
+    animation-delay: calc(var(--animation-order) * 75ms);
+    animation-fill-mode: forwards;
+}
+
+.weatherCard:hover {
+    outline-offset: 0.25em;
+    cursor: pointer;
+
+}
+
+.weatherCard:active {
+    outline-offset: 0;
+}
+
+.weatherCard[activeDay='active'] {
+    outline-offset: 0.25em;
+
+}
+
+.weatherCard .weather-icon {
+    width: 3rem;
+    border-radius: .5rem;
+}
+
+
+.detailedHourly {
+    margin-inline: auto;
+    padding-inline: 1rem;
+    display: flex;
+    flex-flow: row wrap;
+    gap: 2ch;
+    width: auto;
+    /* justify-content: space-evenly; */
+}
+
+.hourlyWeatherCard {
+    opacity: 0%;
+    animation: fade-in 300ms calc(var(--animation-order) * 70ms) forwards;
+    background-color: var(--secondary);
+    padding: 1rem;
+    border-radius: 1rem;
+    outline: 0.5ch solid var(--200);
+    width: 15rem;
+    /* margin-inline-end: auto;
+    height: 4rem;
+    padding-inline: 1rem;
+    background-color: var(--secondary);
+    outline: .5ch solid var(--200);
+    border-radius: 1ch;
+    display: flex;
+    align-items: center;
+    min-width: 60ch;
+    justify-content: space-between; */
+}
+
+.hourlyWeatherCard .weather-icon {
+    padding: .5em;
+    width: 3em;
+    background-color: var(--primary);
+    border-radius: 1em;
+}
+
+
+footer {
+    font-weight: bold;
+    color: var(--secondary);
+    background-color: var(--primary);
+    border-end-start-radius: 1rem;
+    border-end-end-radius: 1rem;
+    grid-area: footer;
+    text-align: center;
+    padding: 1ch;
+}
